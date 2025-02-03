@@ -128,8 +128,6 @@ const handleCategoryChange = (category: string) => {
                       </Grid>
           ))}
           {/* 부족한 공간을 채우기 위한 빈 카드 렌더링 */}
-{/* {RenderPlaceholderCards(recipes.length)} */}
-{/* {filteredRecipes.length < recipes.length && RenderPlaceholderCards(recipes.length - filteredRecipes.length)} */}
 {filteredRecipes.length < 5 && RenderPlaceholderCards(filteredRecipes.length, recipes.length)}
         </Grid>
       )}
