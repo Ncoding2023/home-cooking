@@ -1,0 +1,38 @@
+/* RecipeCarousel.css */
+
+/* Carousel 컨테이너 스타일 */
+.carousel-container {
+    width: 100%;
+    /* padding-top: 20px; */
+    margin-bottom: 40px;  /* 아래쪽 여백 */
+  }
+  
+  /* 이미지 스타일 */
+  .carousel-image {
+    width: 100%;
+    /* padding-top: -20px; */
+    /* height: auto; */
+    height: 300px; /* 원하는 높이로 설정 */
+    object-fit: cover;  /* 이미지 비율 유지하면서 공간에 맞게 조정 */
+  }
+  
+  /* 슬라이더 화살표 스타일 */
+  .slick-prev, .slick-next {
+    background-color: rgba(0, 0, 0, 0.5);  /* 화살표 배경 색 */
+    border-radius: 50%;
+    z-index: 10;  /* 화살표를 슬라이드 위에 보이게 */
+  }
+  
+  .slick-prev {
+    left: 10px;
+  }
+  
+  .slick-next {
+    right: 10px;
+  }
+  
+  /* 슬라이드가 활성화될 때 애니메이션 효과 */
+  .slick-slide {
+    transition: transform 0.5s ease;
+  }
+  

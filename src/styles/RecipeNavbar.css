@@ -1,0 +1,61 @@
+/* RecipeNavbar.css */
+
+/* AppBar 스타일 */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* background-color: #FF6F61; */
+    background: linear-gradient(90deg, #FF6F61, #FF9F80)!important; 
+    box-shadow: none;
+  }
+  
+  /* Toolbar 스타일 */
+  .toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 70px;
+  }
+  
+  /* 로고 스타일 */
+  .navbar-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+  }
+  
+  /* 메뉴 항목 스타일 */
+  .navbar-menu {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .navbar-item {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+  }
+  
+  .navbar-item:hover {
+    color: #FFD1C1;
+  }
+  
+  /* 버튼 스타일 */
+  .button {
+    color: white;
+    text-transform: none;
+    font-size: 1rem;
+    padding: 8px 16px;
+    transition: background-color 0.3s;
+    position: relative;
+  z-index: 10;  /* 다른 요소들 위에 올라가도록 설정 */
+  }
+  
+  .button:hover {
+    background-color: #FFD1C1;
+  }
+  

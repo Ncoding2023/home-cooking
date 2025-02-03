@@ -1,0 +1,52 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.content {
+  margin-top: 20px;
+}
+/* 기본 페이지 폰트 크기 및 여백 조정 */
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px; /* 기본 폰트 크기 증가 */
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 2rem; /* 제목 크기 조정 */
+}
+header {
+  height: 70px; /* 헤더 높이 */
+  background-color: #ff6f61; /* 메뉴바 색상 */
+  position: fixed; /* 상단 고정 */
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
