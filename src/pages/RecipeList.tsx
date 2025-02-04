@@ -70,10 +70,11 @@ const handleCategoryChange = (category: string) => {
   };
   // 조리방법 필터 변경 핸들러
   const handleRecipeMethodsChange = (method: string) => {
-    method === "국" ? "국&찌개" : method;
     setSelectedRecipeMethods(method);
-    console.log('선택된 카테고리:', method);  // 콘솔에 선택된 조리방법 출력
   };
+
+
+
 
 
   //페이지네이션
@@ -86,9 +87,11 @@ const handleCategoryChange = (category: string) => {
   return (
     <Box sx={{ marginBottom: 2 }}>
          <h1>Recipe List</h1>
+         
          <CategoryContainer>
       <Title>카테고리</Title>
-      <ButtonContainer>
+      {/* <hr /> */}
+      {/* <ButtonContainer> */}
         <RecipeCategoryFilter
           selectedRecipeCategory={selectedRecipeCategory}
           onCategoryChange={handleCategoryChange}
@@ -97,12 +100,12 @@ const handleCategoryChange = (category: string) => {
           selectedRecipeMethods={selectedRecipeMethods}
           onRecipeMethodsChange={handleRecipeMethodsChange}
         />
+        {/* </ButtonContainer> */}
+    </CategoryContainer>
         {/* <ExcludeIngredientFilter
          excludedIngredients={selectedexcludedIngredients}
          onExcludedIngredientsChange={handleFilterChange}
          /> */}
-        </ButtonContainer>
-    </CategoryContainer>
          {/* <RecipeCategoryFilter
         selectedRecipeCategory={selectedRecipeCategory}
         onCategoryChange={handleCategoryChange}
@@ -110,7 +113,8 @@ const handleCategoryChange = (category: string) => {
 
       {/* 로딩 중일 때 표시 */}
       {loading ? (
-        <Typography>Loading...</Typography>
+        // <Typography>Loading...</Typography>
+        RenderPlaceholderCards(filteredRecipes.length, recipes.length)
       ) : (
         
         <Grid container spacing={3}>

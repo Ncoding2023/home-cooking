@@ -4,6 +4,8 @@ import { Recipe, RecipeAll } from '../types/RecipeTypes';  // 인터페이스 �
 const SERVICE_ID = 'COOKRCP01'; // Example service ID for recipes
 const DATA_TYPE = 'json'; // Response format
 const apiKey = import.meta.env.VITE_RECIPE_API_KEY;
+const baseUrl = 'http://openapi.foodsafetykorea.go.kr/api';
+// const apiUrlNm = await fetch(`${baseUrl}/${apiKey}/${SERVICE_ID}/${DATA_TYPE}/${startIdx}/${endIdx}/RCP_NM=${query}`);
 
   // 키워드 다른곳에서 배열로 사용할 수도 있음 임시
   export const fetchRecipeNms = async (
@@ -12,7 +14,8 @@ const apiKey = import.meta.env.VITE_RECIPE_API_KEY;
     endIdx = 20
   ): Promise<Recipe[]> => {
     try {
-      const apiUrlNm = await fetch(`http://openapi.foodsafetykorea.go.kr/api/${apiKey}/${SERVICE_ID}/${DATA_TYPE}/${startIdx}/${endIdx}/RCP_NM=${query}`);
+      const apiUrlNm = await fetch(`${baseUrl}/${apiKey}/${SERVICE_ID}/${DATA_TYPE}/${startIdx}/${endIdx}/RCP_NM=${query}`);
+      // const apiUrlNm = await fetch(`http://openapi.foodsafetykorea.go.kr/api/${apiKey}/${SERVICE_ID}/${DATA_TYPE}/${startIdx}/${endIdx}/RCP_NM=${query}`);
   
       if (!apiUrlNm.ok) {
         throw new Error(`API 호출 실패: ${apiUrlNm.statusText}`);
@@ -40,7 +43,7 @@ const apiKey = import.meta.env.VITE_RECIPE_API_KEY;
       endIdx = 20
     ): Promise<Recipe[]> => {
       try {
-        const apiUrlDtls = await fetch(`http://openapi.foodsafetykorea.go.kr/api/${apiKey}/${SERVICE_ID}/${DATA_TYPE}/${startIdx}/${endIdx}/RCP_PARTS_DTLS=${query}`);
+        const apiUrlDtls = await fetch(`${baseUrl}/${apiKey}/${SERVICE_ID}/${DATA_TYPE}/${startIdx}/${endIdx}/RCP_PARTS_DTLS=${query}`);
     
         if (!apiUrlDtls.ok) {
           throw new Error(`API 호출 실패: ${apiUrlDtls.statusText}`);
@@ -66,7 +69,7 @@ export const fetchRecipeList = async (
     startIdx: number,
     endIdx: number
   ): Promise<{ recipes: Recipe[], totalCount: number }> => {
-    let apiUrl = `http://openapi.foodsafetykorea.go.kr/api/${apiKey}/${SERVICE_ID}/${DATA_TYPE}/${startIdx}/${endIdx}/`;
+    let apiUrl = `${baseUrl}/${apiKey}/${SERVICE_ID}/${DATA_TYPE}/${startIdx}/${endIdx}/`;
     
     try {
       const response = await fetch(apiUrl);
@@ -88,7 +91,7 @@ export const fetchRecipeList = async (
     startIdx: number,
     endIdx: number,
     ): Promise<{ recipes: Recipe[], totalCount: number }> => {
-    let  apiUrl = `http://openapi.foodsafetykorea.go.kr/api/${apiKey}/${SERVICE_ID}/${DATA_TYPE}/${startIdx}/${endIdx}/RCP_PAT2=${encodeURIComponent(
+    let  apiUrl = `${baseUrl}/${apiKey}/${SERVICE_ID}/${DATA_TYPE}/${startIdx}/${endIdx}/RCP_PAT2=${encodeURIComponent(
       category
     )}`;
     try {
@@ -105,13 +108,13 @@ export const fetchRecipeList = async (
   };
 
 
-  // 재료 제외 RecipeSearchExclude RCP_PARTS_DTLS 필터 조건때문에 이건 안쓸거 같다
+  // 재료 제외 RecipeSearchExclude RCP_PARTS_DTLS 필터 조건때문에 이건 안쓸거 같다 안쓸거 같다 20250204
   export const fetchRecipesExclude = async (
     query: string | string[],  // query는 string[] 또는 string일 수 있음
     startIdx = 1,
     endIdx = 10
   ): Promise<RecipeAll[]> => {
-    const apiUrl = `http://openapi.foodsafetykorea.go.kr/api/${apiKey}/${SERVICE_ID}/${DATA_TYPE}/${startIdx}/${endIdx}`;
+    const apiUrl = `${baseUrl}/${apiKey}/${SERVICE_ID}/${DATA_TYPE}/${startIdx}/${endIdx}`;
     
     try {
       const response = await fetch(apiUrl);
@@ -137,3 +140,23 @@ export const fetchRecipeList = async (
       return [];
     }
   };
+
+  // fetchAutocomplete.ts 자동검색 일단 5개만
+export const fetchAutocomplete = async (query: string, setSuggestions: React.Dispatch<React.SetStateAction<string[]>>) => {
+  if (!query) return;
+
+  const startIdx = 1;
+  const endIdx = 10;
+
+  try {
+    const response = await fetch(`${baseUrl}/${apiKey}/${SERVICE_ID}/${DATA_TYPE}/${startIdx}/${endIdx}/RCP_NM=${encodeURIComponent(query)}`);
+    const data = await response.json();
+    console.log("data :: ", data[SERVICE_ID].row);
+
+    // 검색 결과에서 레시피 이름만 추출
+    const recipeNames = data[SERVICE_ID].row.map((item: any) => item.RCP_NM);
+    setSuggestions(recipeNames);
+  } catch (error) {
+    console.error("자동완성 데이터를 불러오는 중 오류 발생:", error);
+  }
+};

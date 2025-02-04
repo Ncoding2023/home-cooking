@@ -16,17 +16,19 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ title, description, description
   return (
     // <Card>
     <Card sx={{
-  // width: '90%',
-  // width: '380px',
-  // minHeight: '250px',
-  display: 'flex',
-  flexDirection: 'column',
-  flexGrow: 1,  // 부모 요소의 공간을 차지하도록 설정
-}}>
-      <CardMedia onClick={handleCardClick} component="img" height="140" image={image} alt={title} />
+      // width: '90%',
+      // width: '380px',
+      // minHeight: '250px',
+      display: 'flex',
+      flexDirection: 'column',
+      flexGrow: 1,  // 부모 요소의 공간을 차지하도록 설정
+    }}>
+      <CardMedia onClick={handleCardClick} component="img" height="180" image={image} alt={title} />
       <CardContent>
-        <Typography variant="h6" component="div" sx={{overflow: 'hidden'}}>
-          {title}
+        <Typography variant="h6" component="div" sx={{ overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          whiteSpace: 'nowrap',}}>
+                {title}
         </Typography>
         <Typography variant="body2" color="text.secondary" noWrap>
           {description}

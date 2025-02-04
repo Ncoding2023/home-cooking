@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import RecipeDetail from './pages/RecipeDetail';
 // import { Test1 } from './pages/Test1';
 import Test1 from './pages/Test1';  // 기본 내보내기 방식으로 import
+import RecipeSearchPage from './pages/RecipeSearchPage';
 
 // import { RecipeProvider } from './types/RecipeContext';  // RecipeProvider import
 function App() {
@@ -30,6 +31,7 @@ function App() {
       <Route path="/RecipeList" element={<RecipeList />} />
       <Route path="/recipe/:id" element={<RecipeDetail />} />
       <Route path="/Test1" element={<Test1/>} />
+      <Route path="/search" element={<RecipeSearchPage/>} />
       {/* <Route path="/RecipeList" element={<RecipeList />} /> */}
     </Routes>
     </div>
