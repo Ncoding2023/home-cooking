@@ -11,6 +11,8 @@ import RecipeDetail from './pages/RecipeDetail';
 // import { Test1 } from './pages/Test1';
 import Test1 from './pages/Test1';  // 기본 내보내기 방식으로 import
 import RecipeSearchPage from './pages/RecipeSearchPage';
+import RecipeAbout from './pages/RecipeAbout';
+import RecipeFavorite from './pages/RecipeFavorite';
 
 // import { RecipeProvider } from './types/RecipeContext';  // RecipeProvider import
 function App() {
@@ -32,6 +34,8 @@ function App() {
       <Route path="/recipe/:id" element={<RecipeDetail />} />
       <Route path="/Test1" element={<Test1/>} />
       <Route path="/search" element={<RecipeSearchPage/>} />
+      <Route path="/RecipeAbout" element={<RecipeAbout/>} />
+      <Route path="/RecipeFavorite" element={<RecipeFavorite/>} />
       {/* <Route path="/RecipeList" element={<RecipeList />} /> */}
     </Routes>
     </div>

@@ -91,17 +91,14 @@ const handleSearch = () => {
             </Grid>
           ))
         ) : (
-          !loading && (
+          loading && (
             <Typography variant="body1" color="text.secondary">
               No recipes found. Try a different search.
             </Typography>
           )
         )}
       </Grid>
-      {/* 홈페이지 하단에 게시판 추가 */}
-      <Box sx={{ padding: 3, marginTop: 4, borderTop: '2px solid #ccc' }}>
-  <PatchNotes />  {/* 게시판 컴포넌트 호출 */}
-</Box>
+      
     </Box>
   );
   

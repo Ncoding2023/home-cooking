@@ -30,10 +30,44 @@ const patchData = [
   },
   {
     id: 2,
-    title: "두 번째 게시글",
-    author: "관리자",
-    createdAt: "20250202",
-    status: "대기",
-    content: "두 번째 게시글 내용입니다.",
+    title: "20250206",
+    author: "남상원",
+    createdAt: "20250206",
+    status: "수정 및 추가",
+    content: `20250206
+    .
+    About add
+    About 페이지를 만들면 프로젝트를 보다 전문적으로 보이게 할 수 있어. 현재 GitHub에 소스를 오픈하고 있다면, 다음과 같은 요소를 추가하면 좋을 것 같아:
+
+      프로젝트 소개: 프로젝트의 목적과 기능을 간략히 설명
+      기술 스택: 사용한 기술 및 프레임워크 명시
+      깃허브 링크: 코드 저장소로 이동할 수 있도록 추가
+      업데이트 내역: 주요 변경 사항이나 향후 계획 공유
+      
+파일명 : RecipeAbout
+
+RecipeDetail 추가 작업으로 현재 관련 게시물 작업도중   API호출시 200이 나오며 오류 발생 중
+오류가 발생 중이므로 금일의 githud는 보류
+
+    `,
   },
+  {
+    id: 2,
+    title: "20250211",
+    author: "남상원",
+    createdAt: "20250211",
+    status: "수정 및 추가",
+    content: `20250211
+    .
+    추가
+    RecipeFavorite add
+    RecipeFavorite 페이지를 추가하면서 찜목록 구현
+
+    수정
+    RecipeCard update
+    RecipeCard 컴포넌트에 찜 관련으로 웹 스토리지 구현
+    아직 미ㅇ완성
+    `,
+  },
+  
 ];

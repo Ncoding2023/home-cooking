@@ -16,6 +16,7 @@ const RecipeSearch = forwardRef<HTMLDivElement, RecipeSearchProps>(({ query, onQ
     useEffect(() => {
       if (query) {
         debouncedFetchSuggestions(query);  // 검색어가 변경될 때마다 자동으로 검색
+
       } else {
         setAutocomplete([]);  // 검색어가 없을 경우 추천 목록 비우기
       }

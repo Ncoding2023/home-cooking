@@ -15,8 +15,6 @@ const baseUrl = 'http://openapi.foodsafetykorea.go.kr/api';
   ): Promise<Recipe[]> => {
     try {
       const apiUrlNm = await fetch(`${baseUrl}/${apiKey}/${SERVICE_ID}/${DATA_TYPE}/${startIdx}/${endIdx}/RCP_NM=${query}`);
-      // const apiUrlNm = await fetch(`http://openapi.foodsafetykorea.go.kr/api/${apiKey}/${SERVICE_ID}/${DATA_TYPE}/${startIdx}/${endIdx}/RCP_NM=${query}`);
-  
       if (!apiUrlNm.ok) {
         throw new Error(`API 호출 실패: ${apiUrlNm.statusText}`);
       }
@@ -158,5 +156,46 @@ export const fetchAutocomplete = async (query: string, setSuggestions: React.Dis
     setSuggestions(recipeNames);
   } catch (error) {
     console.error("자동완성 데이터를 불러오는 중 오류 발생:", error);
+  }
+};
+
+// 레시피 상세 페이지에서 보이게 하고 싶어
+export const fetchRecipeRelatedFoodsNms = async (
+  query: string,
+): Promise<Recipe[]> => {
+  const getRandomStartIdx = (max: number) => {
+    let startIdx = Math.floor(Math.random() * max);
+    startIdx = Math.max(0, startIdx - 3); // 최소값 0 보장
+    return startIdx;
+  };
+  
+  const maxItems = 300;
+  const startIdx = getRandomStartIdx(maxItems);
+  const endIdx = startIdx+2;
+
+  // console.log("queryqueryquery",query);
+  // console.log("startIdxendIdx",startIdx,endIdx);
+  try {
+    const apiUrlNm = await fetch(`${baseUrl}/${apiKey}/${SERVICE_ID}/${DATA_TYPE}/${startIdx}/${endIdx}/RCP_PAT2=${encodeURIComponent(query)}`);
+    
+    if (!apiUrlNm.ok) {
+      throw new Error(`API 호출 실패: ${apiUrlNm.statusText}`);
+    }
+    
+    // console.log("startIdxendIdx",await apiUrlNm.text);
+    const data = await apiUrlNm.json();
+    // const text = await data.text(); 
+    // console.log("Raw response:", text); // 원본 확인
+
+    // 데이터 구조 검증
+    if (data[SERVICE_ID] && data[SERVICE_ID].row) {
+      return data[SERVICE_ID].row;
+    } else {
+      console.warn('키워드가 포함된 요리명이 없습니다.');
+      return []; // 결과가 없으면 빈 배열 반환
+    }
+  } catch (error) {
+    console.error('API 호출 중 오류 발생:', error);
+    return []; // 오류 발생 시 빈 배열 반환
   }
 };

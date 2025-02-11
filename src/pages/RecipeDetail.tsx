@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Typography, Card, CardMedia, CardContent, Box, Grid, Paper } from '@mui/material';
+import { Typography, Card, CardMedia, CardContent, Box, Grid, Paper,CircularProgress } from '@mui/material';
 import { InfoText, IngredientItem, IngredientsContent, IngredientsTitle, NutritionInfo, RecipeDetailContainer, RecipeImage, StepCard, StepContainer, StepImage, StyledCard, TipContainer} from '../styles/RecipeDetailStyles'; // 타입을 types에서 임포트
+// import { Box, Grid, Typography, , Paper } from '@mui/material';
 import { NutritionTitle, InfoCard } from '../styles/RecipeDetailStyles'; // 타입을 types에서 임포트
-import { RecipeDetailProps } from '../types/RecipeTypes';
+import { Recipe, RecipeDetailProps } from '../types/RecipeTypes';
+import { fetchRecipeRelatedFoodsNms } from '../utils/RecipeApi';
+import RecipeCard from '../components/RecipeCard';
 // import LightbulbIcon from '@mui/icons-material/Lightbulb';
 
 
@@ -11,6 +14,25 @@ import { RecipeDetailProps } from '../types/RecipeTypes';
 const RecipeDetail: React.FC = () => {
   const location = useLocation();
   const recipe: RecipeDetailProps = location.state?.recipeAll;
+  const [recipeRelateds, setRecipeRelateds] = useState<Recipe[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const query = recipe.RCP_PAT2; // RCP_PAT2가 없으면 기본값 사용
+
+  const getRecipes = useCallback(async () => {
+    if (query) {
+      console.log("query", query);
+      setLoading(true);
+      const data = await fetchRecipeRelatedFoodsNms(query);
+      setRecipeRelateds(data);
+      setLoading(false);
+    }
+  }, [query]); 
+  
+  useEffect(() => {
+    getRecipes();
+  }, [getRecipes]);
+
 console.log(recipe);
   if (!recipe) {
     return <div>레시피를 찾을 수 없습니다.</div>;
@@ -47,13 +69,11 @@ console.log(recipe);
        <Typography variant="h5" gutterBottom>
           구성 재료
       </Typography>
-            {/* <IngredientsTitle>
-              재료:
-            </IngredientsTitle> */}
+      
       <StyledCard>
         <CardContent>
           <IngredientsContent>
-            {recipe.RCP_PARTS_DTLS.split("\n").map((line, index) => (
+            {recipe.RCP_PARTS_DTLS || "".split("\n").map((line, index) => ( //찜목록때문에 추가
               <IngredientItem key={index} variant="body1"  gutterBottom index={index} >
                 {line}
               </IngredientItem>
@@ -68,11 +88,7 @@ console.log(recipe);
 
 
       <Box>
-      {/* <Typography variant="h5" gutterBottom>
-      영양 정보
-      </Typography> */}
-      {/* <Paper elevation={3} sx={{ padding: '16px', borderRadius: '8px' }}> */}
-        {/* <NutritionTitle variant="h6">영양 정보</NutritionTitle> */}
+
         <Typography variant="h5" gutterBottom>
       영양 정보
       </Typography>
@@ -120,15 +136,9 @@ console.log(recipe);
               </CardContent>
             </InfoCard>
           </Grid>
-          {/* <Grid item xs={12} sm={6}> apl에 데이터가 없어
-            <InfoCard>
-              <CardContent>
-                <InfoText variant="body1"><strong>중량:</strong> {recipe.INFO_WGT} mg</InfoText>
-              </CardContent>
-            </InfoCard>
-          </Grid> */}
+
         </Grid>
-      {/* </Paper> */}
+
     </Box>
 
 
@@ -137,7 +147,7 @@ console.log(recipe);
 
 
     {/* 조리 과정 */}
-    <Box mt={3}>
+    <Box mt={4}>
       <Typography variant="h5" gutterBottom>
         조리 과정
       </Typography>
@@ -166,7 +176,29 @@ console.log(recipe);
       )}
     </Box>
     
+    <Box sx={{ display: 'flex', flexDirection: 'column' } } marginY={5}>
+{loading ? (
+    <CircularProgress />  // 로딩 중일 때 표시할 컴포넌트 (예: 로딩 스피너)
+  ) : (
 
+    <Grid container spacing={3}>
+<Typography variant="h4" sx={{ display: 'block', textAlign: 'center', width: '100%' }}>
+    관련 레시피
+</Typography>
+      {recipeRelateds.map((recipeRelated: any) => (
+        <Grid item xs={12} sm={6} md={4} key={recipeRelated.RCP_SEQ}>
+          <RecipeCard
+            title={recipeRelated.RCP_NM}
+            description={recipeRelated.RCP_PAT2 || "No description available."}
+            descriptionMethod={recipeRelated.RCP_WAY2 || "No description available."}
+            image={recipeRelated.ATT_FILE_NO_MAIN || "https://via.placeholder.com/150"}
+            recipeAll={recipeRelated}
+          />
+        </Grid>
+      ))}
+    </Grid>
+  )}
+</Box>
     
 
   </RecipeDetailContainer>

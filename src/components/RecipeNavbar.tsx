@@ -6,12 +6,12 @@ import React, { useState } from "react";
 import { AppBar, Toolbar, IconButton, TextField, Box, Slide, Button, Typography } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { Link, useNavigate } from 'react-router-dom';  // Link 임포트
-import { Navbar, NavbarLogo, NavbarMenu, NavbarItem } from './RecipeNavbarStyles'; // 스타일 import
+// import { Navbar, NavbarLogo, NavbarMenu, NavbarItem } from './RecipeNavbarStyles'; // 스타일 import
 
 // import { Box } from "@mui/material";
 import "../styles/RecipeNavbar.css";
-import RecipeList from "../pages/RecipeList";
-import Home from "../pages/Home";
+// import RecipeList from "../pages/RecipeList";
+// import Home from "../pages/Home";
 import RecipeSearch from "./RecipeSearch";
 
 const RecipeNavbar: React.FC = () => {
@@ -63,7 +63,7 @@ const RecipeNavbar: React.FC = () => {
 검색 기능: 사용자가 특정 재료나 이름으로 레시피를 검색할 수 있는 기능.
 레시피 카드: 각 레시피를 카드 형태로 정리하고, 각 카드에 상세보기 버튼을 추가하여 자세한 레시피 정보를 제공.
 즐겨찾기: 마음에 드는 레시피를 즐겨찾기할 수 있는 기능. */}
-          <Button className="button" href="#about">
+            <Button className="button"  component={Link}  to="/RecipeAbout">
             About
             {/* 
 팀 소개: 사이트 또는 앱을 만든 개발자나 팀을 소개하는 섹션.
@@ -73,6 +73,9 @@ FAQ: 자주 묻는 질문들을 정리하여 사용자들이 쉽게 궁금증을
           </Button>
           <Button className="button"  component={Link}  to="/Test1">
             Test1
+          </Button>
+          <Button className="button"  component={Link}  to="/RecipeFavorite">
+          Favorite
           </Button>
                     {/* Search Icon */}
                     <IconButton color="inherit" onClick={toggleSearch}>

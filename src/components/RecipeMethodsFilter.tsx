@@ -47,7 +47,7 @@ const RecipeMethodsFilter: React.FC<RecipeMethodsFilterProps> = ({
 
 //   return (
     <CategoryContainer>
-      <Title>방법</Title>
+      <Title>방식</Title>
       <CategoryBox>
         {/* 전체 카테고리 */}
         <CategoryItem

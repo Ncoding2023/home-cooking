@@ -96,11 +96,12 @@ const RecipeSearchPage: React.FC = () => {
               </Grid>
             ))
           ) : (
-            !loading && (
-              <Typography variant="body1" color="text.secondary">
-                No recipes found. Try a different search.
-              </Typography>
-            )
+            !loading 
+            // && (
+            //   <Typography variant="body1" color="text.secondary">
+            //     No recipes found. Try a different search.
+            //   </Typography>
+            // )
           )}
         </Grid>
       )}
