@@ -169,10 +169,10 @@ export const fetchRecipeRelatedFoodsNms = async (
     return startIdx;
   };
   
-  const maxItems = 300;
+  const maxItems = 100;
   const startIdx = getRandomStartIdx(maxItems);
   const endIdx = startIdx+2;
-
+  
   // console.log("queryqueryquery",query);
   // console.log("startIdxendIdx",startIdx,endIdx);
   try {

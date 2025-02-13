@@ -74,10 +74,10 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ title, description, description
                 </Typography>
 
                 {/* 종류와 방식 텍스트 */}
-                <Typography variant="body2" color="text.secondary" noWrap>
+                <Typography variant="body2" color="text.secondary" noWrap sx={{ textAlign: 'left' }}>
                     <strong>종류</strong> &gt; {description}
                 </Typography>
-                <Typography variant="body2" color="text.secondary" noWrap>
+                <Typography variant="body2" color="text.secondary" noWrap sx={{ textAlign: 'left' }}>
                     <strong>방식</strong> &gt; {descriptionMethod}
                 </Typography>
 
@@ -87,7 +87,7 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ title, description, description
                         e.stopPropagation(); // 카드 클릭 이벤트가 발생하지 않도록
                         handleFavoriteToggle(); // 찜 상태 토글
                     }} 
-                    sx={{ position: 'absolute', top: 8, right: 8 }}
+                    sx={{ position: 'absolute', top: 48, right: 8 }}
                 >
                     {isFavorited ? <Favorite color="error" /> : <FavoriteBorder />}
                 </IconButton>

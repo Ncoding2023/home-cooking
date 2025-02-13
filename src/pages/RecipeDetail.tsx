@@ -23,7 +23,12 @@ const RecipeDetail: React.FC = () => {
     if (query) {
       console.log("query", query);
       setLoading(true);
-      const data = await fetchRecipeRelatedFoodsNms(query);
+      let queryStr:string;
+      queryStr = query;
+
+      queryStr = queryStr === "국&찌개" ? "국" : query;
+      console.log("queryStr", queryStr);
+      const data = await fetchRecipeRelatedFoodsNms(queryStr);
       setRecipeRelateds(data);
       setLoading(false);
     }

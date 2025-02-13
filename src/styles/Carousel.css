@@ -12,7 +12,7 @@
     width: 100%;
     /* padding-top: -20px; */
     /* height: auto; */
-    height: 300px; /* 원하는 높이로 설정 */
+    height: 500px; /* 원하는 높이로 설정 */
     object-fit: cover;  /* 이미지 비율 유지하면서 공간에 맞게 조정 */
   }
   

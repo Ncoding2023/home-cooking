@@ -13,6 +13,7 @@ import Test1 from './pages/Test1';  // 기본 내보내기 방식으로 import
 import RecipeSearchPage from './pages/RecipeSearchPage';
 import RecipeAbout from './pages/RecipeAbout';
 import RecipeFavorite from './pages/RecipeFavorite';
+import RecipeFooter from './components/RecipeFooter';
 
 // import { RecipeProvider } from './types/RecipeContext';  // RecipeProvider import
 function App() {
@@ -40,6 +41,7 @@ function App() {
     </Routes>
     </div>
   </Router>
+  <RecipeFooter />   {/* 풋터 추가 */}
   {/* </RecipeProvider> */}
       {/* <RecipeNavbar /> */}
       {/* 본문 */}
