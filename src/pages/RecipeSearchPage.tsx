@@ -1,27 +1,18 @@
-// RecipeSearchPage.tsx
 import React, { useState,useEffect } from 'react';
 import { Box, Grid, Typography, CircularProgress, Paper } from '@mui/material';
-import RecipeSearch from '../components/RecipeSearch';
 import RecipeCard from '../components/RecipeCard';
 import { fetchRecipeDtls, fetchRecipeNms } from '../utils/RecipeApi';
-import RecipeCarousel from '../components/RecipeCarousel';
 import { Recipe } from '../types/RecipeTypes';
 import { useLocation } from 'react-router-dom';
-// import RecipeSearch from "../components/RecipeSearch";
 
 const RecipeSearchPage: React.FC = () => {
-    const location = useLocation();
-    const queryParams = new URLSearchParams(location.search);
-    const query = queryParams.get("query") || "";
-//   const [query, setQuery] = useState('');
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const query = queryParams.get("query") || "";
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  
-// console.log(apiKey);  // 실제 API 키가 출력됩니다.
-//   const API_KEY = 'yourApiKeyHere'; // Replace with your actual API key
-  
   const fetchResults  = async () => {
     if (!query) {
       setError('Please enter a search term.');
@@ -33,7 +24,6 @@ const RecipeSearchPage: React.FC = () => {
     setRecipes([]);
 
     try {
-    //   const results = await fetchRecipes(query, apiKey);
       const json1 = await fetchRecipeNms(query);
       const json2 = await fetchRecipeDtls(query);
 
@@ -41,7 +31,6 @@ const RecipeSearchPage: React.FC = () => {
       const response = combinedData.filter((value, index, self) =>
       index === self.findIndex((t) => t.RCP_SEQ === value.RCP_SEQ)
       );
-
 
       setRecipes(response);
     } catch (err) {
@@ -67,14 +56,12 @@ const RecipeSearchPage: React.FC = () => {
         검색 결과 {recipes.length}개
       </Typography>
 
-      {/* Error Message */}
       {error && (
         <Typography variant="body1" color="error" gutterBottom>
           {error}
         </Typography>
       )}
 
-      {/* Loading Spinner */}
       {loading ? (
         <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
           <CircularProgress />
@@ -97,11 +84,6 @@ const RecipeSearchPage: React.FC = () => {
             ))
           ) : (
             !loading 
-            // && (
-            //   <Typography variant="body1" color="text.secondary">
-            //     No recipes found. Try a different search.
-            //   </Typography>
-            // )
           )}
         </Grid>
       )}

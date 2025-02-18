@@ -6,48 +6,12 @@ import { Grid, Typography, Box } from '@mui/material';
 const RecipeFavorite = () => {
   const [favorites, setFavorites] = useState<any[]>([]);
 
-  // 페이지 로드 시 localStorage에서 찜 목록을 불러오기
   useEffect(() => {
     const savedFavorites = localStorage.getItem("favorites");
     if (savedFavorites) {
       setFavorites(JSON.parse(savedFavorites));
     }
   }, []);
-
-  // 찜 상태 토글 함수 (RecipeCard에서 사용)
-  const handleFavoriteToggle = (RCP_SEQ: string) => {
-    const savedFavorites = localStorage.getItem("favorites");
-    let favorites = savedFavorites ? JSON.parse(savedFavorites) : [];
-
-    // 해당 레시피의 찜 상태를 반전
-    const updatedFavorites = favorites.map((favorite: any) => {
-      if (favorite.RCP_SEQ === RCP_SEQ) {
-        favorite.isFavorited = !favorite.isFavorited;
-      }
-      return favorite;
-    });
-
-    // 찜 상태를 localStorage에 업데이트
-    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-
-    // 상태 업데이트
-    setFavorites(updatedFavorites);
-  };
-
-  // 찜 목록에서 레시피 삭제하기
-  const handleRemoveFavorite = (RCP_SEQ: string) => {
-    const savedFavorites = localStorage.getItem("favorites");
-    let favorites = savedFavorites ? JSON.parse(savedFavorites) : [];
-
-    // 해당 레시피를 찜 목록에서 제거
-    const updatedFavorites = favorites.filter((favorite: any) => favorite.RCP_SEQ !== RCP_SEQ);
-
-    // 찜 목록을 localStorage에 다시 저장
-    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-
-    // 상태 업데이트
-    setFavorites(updatedFavorites);
-  };
 
   return (
     <Box sx={{ marginTop: 10 , width: 950}}>

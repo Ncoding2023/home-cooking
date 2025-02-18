@@ -3,7 +3,7 @@ import { Box, Grid, Typography } from '@mui/material';
 import RecipeSearchArray from '../components/RecipeSearch';
 import RecipeCard from '../components/RecipeCard';
 import { fetchRecipesExclude } from '../utils/RecipeApi';
-import { Recipe, RecipeAll } from '../types/RecipeTypes';
+import { RecipeAll } from '../types/RecipeTypes';
 
 const Home: React.FC = () => {
   const [query, setQuery] = useState('');
@@ -16,7 +16,6 @@ const Home: React.FC = () => {
       setError('Please enter a search term.');
       return;
     }
-
     setLoading(true);
     setError('');
     setRecipes([]);
@@ -36,9 +35,7 @@ const Home: React.FC = () => {
       <Typography variant="h4" component="h1" gutterBottom>
         해당 재료 미포함 
       </Typography>
-        {/* Recipe Search */}
 
-      {/* Recipe Search */}
       <RecipeSearchArray
         query={query}
         onQueryChange={setQuery}
@@ -46,7 +43,6 @@ const Home: React.FC = () => {
         isLoading={loading}
       />
 
-      {/* Error Message */}
       {error && (
         <Typography variant="body1" color="error" gutterBottom>
           {error}

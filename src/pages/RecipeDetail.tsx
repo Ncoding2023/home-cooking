@@ -1,15 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Typography, Card, CardMedia, CardContent, Box, Grid, Paper,CircularProgress } from '@mui/material';
-import { InfoText, IngredientItem, IngredientsContent, IngredientsTitle, NutritionInfo, RecipeDetailContainer, RecipeImage, StepCard, StepContainer, StepImage, StyledCard, TipContainer} from '../styles/RecipeDetailStyles'; // 타입을 types에서 임포트
-// import { Box, Grid, Typography, , Paper } from '@mui/material';
-import { NutritionTitle, InfoCard } from '../styles/RecipeDetailStyles'; // 타입을 types에서 임포트
+import { Typography, CardContent, Box, Grid, CircularProgress } from '@mui/material';
+import { InfoText, IngredientItem, IngredientsContent, RecipeDetailContainer, RecipeImage, StepContainer, StepImage, StyledCard, TipContainer} from '../styles/RecipeDetailStyles'; // 타입을 types에서 임포트
+import { InfoCard } from '../styles/RecipeDetailStyles'; 
 import { Recipe, RecipeDetailProps } from '../types/RecipeTypes';
 import { fetchRecipeRelatedFoodsNms } from '../utils/RecipeApi';
 import RecipeCard from '../components/RecipeCard';
-// import LightbulbIcon from '@mui/icons-material/Lightbulb';
-
-
 
 const RecipeDetail: React.FC = () => {
   const location = useLocation();
@@ -50,7 +46,7 @@ console.log(recipe);
         <RecipeImage
           component="img"
           image={recipe.ATT_FILE_NO_MAIN || 'https://via.placeholder.com/150'}
-          alt={recipe.RCP_NM}
+          alt={recipe.RCP_NM} 
           height="300"
         />
         <CardContent>
@@ -64,10 +60,6 @@ console.log(recipe);
       </StyledCard>
       </Box>
 
-      
-
-
-
        {/* 재료 영역 */}
        <Box mt={3}>
        
@@ -78,8 +70,8 @@ console.log(recipe);
       <StyledCard>
         <CardContent>
           <IngredientsContent>
-            {recipe.RCP_PARTS_DTLS || "".split("\n").map((line, index) => ( //찜목록때문에 추가
-              <IngredientItem key={index} variant="body1"  gutterBottom index={index} >
+            {recipe.RCP_PARTS_DTLS || "".split("\n").map((line, index) => (
+              <IngredientItem key={index} variant="body1"  gutterBottom data-index={index} >
                 {line}
               </IngredientItem>
             ))}
@@ -88,12 +80,7 @@ console.log(recipe);
       </StyledCard>
       </Box>
 
-
-
-
-
       <Box>
-
         <Typography variant="h5" gutterBottom>
       영양 정보
       </Typography>
@@ -141,15 +128,8 @@ console.log(recipe);
               </CardContent>
             </InfoCard>
           </Grid>
-
         </Grid>
-
     </Box>
-
-
-
-
-
 
     {/* 조리 과정 */}
     <Box mt={4}>
@@ -173,7 +153,6 @@ console.log(recipe);
 
       {recipe.RCP_NA_TIP && (
         <TipContainer>
-          {/* <LightbulbIcon color="warning" /> */}
           <Typography variant="body2">
             <strong>요리 팁:</strong> {recipe.RCP_NA_TIP}
           </Typography>
@@ -185,7 +164,6 @@ console.log(recipe);
 {loading ? (
     <CircularProgress />  // 로딩 중일 때 표시할 컴포넌트 (예: 로딩 스피너)
   ) : (
-
     <Grid container spacing={3}>
 <Typography variant="h4" sx={{ display: 'block', textAlign: 'center', width: '100%' }}>
     관련 레시피
@@ -204,11 +182,7 @@ console.log(recipe);
     </Grid>
   )}
 </Box>
-    
-
   </RecipeDetailContainer>
-
-  
   );
 };
 

@@ -1,33 +1,25 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
-  MenuItem,
-  Select,
-  InputLabel,
-  FormControl,
   Grid,
-  Typography,
 } from "@mui/material";
-import { fetchRecipeList, fetchRecipeCategories } from "../utils/RecipeApi"; // 레시피 데이터 가져오기
+import { fetchRecipeList, fetchRecipeCategories } from "../utils/RecipeApi";
 import RecipeCard from "../components/RecipeCard";
 import { Recipe } from "../types/RecipeTypes";
 import PageNavigation from "../components/PageNavigation";
-import RecipeSearch from "../components/RecipeSearch";
 import RecipeCategoryFilter from "../components/RecipeCategoryFilter";
 import {
   RecipeListContainer,
   CategoryContainer,
   Title,
-} from "../styles/RecipeListStyles"; // 타입을 types에서 임포트
+} from "../styles/RecipeListStyles";
 import RecipeMethodsFilter from "../components/RecipeMethodsFilter";
 import { RenderPlaceholderCards } from "../components/RenderPlaceholderCards";
-import { min } from "lodash";
 
 const RecipeList: React.FC = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
-  //카테고리 함수 조리방법 보류생각중
   const [selectedRecipeCategory, setSelectedRecipeCategory] =
     useState<string>(""); // 선택된 요리종류
   const [selectedRecipeMethods, setSelectedRecipeMethods] =
@@ -59,22 +51,18 @@ const RecipeList: React.FC = () => {
           startIdx,
           endIdx
         );
-        // console.log("data :: ", data);
       } else {
         data = await fetchRecipeList(startIdx, endIdx);
       }
       if (data) {
         setRecipes(data.recipes || []); // 레시피 데이터 업데이트
         setTotalItems(data.totalCount || 0); // 전체 아이템 개수 업데이트
-        // console.log("recipes.RCP_WAY2", recipes.RCP_WAY2);
       }
       setLoading(false);
     } catch (error) {
       console.error("Error fetching recipes: ", error);
     }
   };
-  // 메모 해서 조회 데이터 저장한다지만 안되는거 같다 느림
-  const memoizedRecipes = useMemo(() => recipes, [recipes]);
 
   // 요리종류 필터 변경 핸들러
   const handleCategoryChange = (category: string) => {
@@ -96,12 +84,9 @@ const RecipeList: React.FC = () => {
   return (
     <Box sx={{ marginBottom: 2 , width: 950}}>
       <RecipeListContainer>
-      {/* <h1>Recipe List</h1> */}
       
       <CategoryContainer>
         <Title>카테고리</Title>
-        {/* <hr /> */}
-        {/* <ButtonContainer> */}
         <RecipeCategoryFilter
           selectedRecipeCategory={selectedRecipeCategory}
           onCategoryChange={handleCategoryChange}
@@ -111,25 +96,12 @@ const RecipeList: React.FC = () => {
           onRecipeMethodsChange={handleRecipeMethodsChange}
         />
       </CategoryContainer>
-      {/* </ButtonContainer> */}
-
-      {/* <ExcludeIngredientFilter
-         excludedIngredients={selectedexcludedIngredients}
-         onExcludedIngredientsChange={handleFilterChange}
-         /> */}
-      {/* <RecipeCategoryFilter
-        selectedRecipeCategory={selectedRecipeCategory}
-        onCategoryChange={handleCategoryChange}
-      /> */}
-
       {/* 로딩 중일 때 표시 */}
       {loading ? (
         RenderPlaceholderCards(filteredRecipes.length, recipes.length)
       ) : (
         
         <Grid container spacing={3}>
-          {/* {recipes.map((recipe) => ( */}
-          {/* {memoizedRecipes.map((recipe) => ( */}
           {filteredRecipes.map((recipe) => (
             <Grid item xs={12} sm={6} md={4} key={recipe.RCP_SEQ}>
               <RecipeCard
@@ -145,13 +117,11 @@ const RecipeList: React.FC = () => {
               />
             </Grid>
           ))}
-          {/* 부족한 공간을 채우기 위한 빈 카드 렌더링 */}
           {filteredRecipes.length < 5 &&
             RenderPlaceholderCards(filteredRecipes.length, recipes.length)}
         </Grid>
       )}
 
-      {/* 페이지네이션 (단순 예시) */}
       <PageNavigation
         startIdx={startIdx}
         endIdx={endIdx}

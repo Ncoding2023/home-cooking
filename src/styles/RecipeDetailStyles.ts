@@ -15,23 +15,15 @@ export const StyledList = styled.ul`
 export const StepCard = styled(Card)`
   margin-bottom: 16px;
 `;
-
-export const RecipeImage = styled(CardMedia)`
+type RecipeImageProps = {
+  component: 'img';
+  image: string;
+  alt: string;
+  height: string;
+};
+export const RecipeImage = styled(CardMedia)<RecipeImageProps>`
   border-radius: 8px;
 `;
-
-// export const StepContainer = styled(Box)`
-//   display: flex;
-//   align-items: flex-start;
-//   margin-bottom: 16px;
-// `;
-
-// export const StepImage = styled(CardMedia)`
-//   width: 120px;
-//   height: 120px;
-//   border-radius: 8px;
-//   margin-right: 16px;
-// `;
 
 export const StyledCard = styled(Card)`
   margin-bottom: 20px; // 카드 간 간격을 20px로 설정
@@ -66,12 +58,6 @@ export const StepImage = styled('img')({
   },
 });
 
-// const StepImage = styled('img')({
-//   width: '150px',
-//   height: 'auto',
-//   borderRadius: '8px',
-// });
-
 // 조리팁 스타일 정의
 export const TipContainer = styled(Box)({
   backgroundColor: '#fffbe6',
@@ -82,8 +68,6 @@ export const TipContainer = styled(Box)({
   gap: '8px', // theme.spacing(1) 대신
   marginTop: '16px',
 });
-
-
 
 // 재료 제목 스타일링
 export const IngredientsTitle = styled(Typography)`
@@ -125,8 +109,6 @@ export const NutritionInfo = styled(Typography)`
   color: #1976d2; // 강조 색상
   text-align: left; // 왼쪽 정렬
 `;
-
-
 
 export const InfoCard = styled(Card)`
   padding: 16px;

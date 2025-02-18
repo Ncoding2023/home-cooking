@@ -1,42 +1,39 @@
 import React from 'react';
-// import { Box, Typography } from '@mui/material';
 import { RecipeCategoryFilterProps } from '../types/RecipeTypes';
 import { CategoryBox, CategoryContainer, CategoryItem, Title } from '../styles/RecipeCategoryFilterStyles';
-
+import { Apps, SoupKitchen, DinnerDining, RiceBowl, FoodBank, Cake, Restaurant, RestaurantMenu } from "@mui/icons-material";
 
 
 const RecipeCategoryFilter: React.FC<RecipeCategoryFilterProps> = ({
   selectedRecipeCategory,
   onCategoryChange,
 }) => {
-  const categories = ['국&찌개', '반찬', '밥', '일품', '후식', '기타'];
-//   const formattedCategories = categories.map((category) =>
-//   category === '밥' ? '\u00A0밥\u00A0\u00A0' : category // 비어 있는 공백 추가
-// );
+const categories = [
+  { name: "", icon: <Apps /> }, // 
+  { name: "국&찌개", icon: <SoupKitchen /> }, // 국물 요리 → 🍜
+  { name: "반찬", icon: <DinnerDining  /> }, // 반찬 → 🍳
+  { name: "밥", icon: <RiceBowl /> }, // 밥 → 🍚
+  { name: "일품", icon: <FoodBank /> }, // 단품 요리 → 🍽
+  { name: "후식", icon: <Cake/> }, // 디저트 → 🍦
+  { name: "기타", icon: <Restaurant /> } // 기타 → 🍴
+];
+  // const categories = ['국&찌개', '반찬', '밥', '일품', '후식', '기타'];
   return (
     <CategoryContainer>
-      <Title>종류</Title>
+      <Title>
+        <RestaurantMenu color='warning'/>
+        </Title>
       <CategoryBox>
-        {/* 전체 카테고리 */}
-        <CategoryItem
-          isActive={selectedRecipeCategory === ''}
-          onClick={() => onCategoryChange('')}
-        >
-          전체
-        </CategoryItem>
-
-        {/* 개별 카테고리 */}
-        {/* {formattedCategories.map((category) => ( */}
         {categories.map((category) => (
-          <CategoryItem
-            key={category}
-            // isActive={selectedRecipeCategory === category}
-            isActive={selectedRecipeCategory === (category === '국&찌개' ? '국' : category)}
-            onClick={() => onCategoryChange(category)}
-          >
-            {category}
-          </CategoryItem>
-        ))}
+    <CategoryItem
+      key={category.name}
+      isActive={selectedRecipeCategory === (category.name === '국&찌개' ? '국' : category.name)}
+      onClick={() => onCategoryChange(category.name)}
+    >
+      {category.icon}
+      <span>{category.name}</span>
+    </CategoryItem>
+  ))}
       </CategoryBox>
     </CategoryContainer>
   );

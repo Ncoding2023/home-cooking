@@ -1,25 +1,8 @@
 import styled from 'styled-components';
-// import {CardMedia, Card , Box, Typography  } from '@mui/material';
-
-/*export const CategoryContainer = styled.div`
-   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  padding: 24px;
-  background-color: #f5f5f5;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-`; */
 
 export const RecipeListContainer = styled.div`
-   /* display: flex; */
-  /* flex-wrap: wrap;  // 여러 개의 카드를 가로 정렬 */
   max-width: 950px;
   min-width: 950px;
-
-  /* max-width: 1200px; // 최대 크기 제한 */
-  /* min-height: 120px;  */
 
   @media (max-width: 768px) {
     width: 90%;
@@ -29,10 +12,6 @@ export const RecipeListContainer = styled.div`
   }
 `;
 export const CategoryContainer = styled.div`
-   /* display: flex; */
-  /* flex-wrap: wrap;  // 여러 개의 카드를 가로 정렬 */
-  /* max-width: 950px;
-  min-width: 950px; */
   justify-content: center; // 중앙 정렬
   gap: 16px;
   padding: 24px;
@@ -41,9 +20,6 @@ export const CategoryContainer = styled.div`
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin-bottom: 10px;
 
-  /* width: 100%; // 부모 크기 유지 */
-  /* max-width: 1200px; // 최대 크기 제한 */
-  /* min-height: 120px;  */
 
   @media (max-width: 768px) {
     width: 80%;

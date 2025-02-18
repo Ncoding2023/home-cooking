@@ -1,5 +1,4 @@
 import { Card } from "@mui/material";
-// import RecipeCard from "./RecipeCard";
 
 export const RenderPlaceholderCards = (filteredRecipesLength: number, totalRecipesLength: number) => {
   const placeholders: JSX.Element[] = [];
@@ -8,8 +7,6 @@ export const RenderPlaceholderCards = (filteredRecipesLength: number, totalRecip
   const rowsFilled = Math.ceil(filteredRecipesLength / itemsPerRow);
   const emptySlots = (rowsNeeded - rowsFilled) * itemsPerRow;
 
-
-  // for (let i = 0; i < itemsPerRow; i++) {
   if (emptySlots > 0) {
     for (let i = 0; i < itemsPerRow; i++) {
       placeholders.push(

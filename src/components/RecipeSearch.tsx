@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Box, TextField, Button, Autocomplete } from '@mui/material';
-import { RecipeSearchArrayProps, RecipeSearchProps } from '../types/RecipeTypes';
+import { RecipeSearchProps } from '../types/RecipeTypes';
 import { debounce } from "lodash";
 import { fetchAutocomplete } from '../utils/RecipeApi';
 import { forwardRef } from "react";
 
 const RecipeSearch = forwardRef<HTMLDivElement, RecipeSearchProps>(({ query, onQueryChange, onSearch, isLoading }, ref) => {
-// const RecipeSearch: React.FC<RecipeSearchProps> = ({ query, onQueryChange, onSearch, isLoading }) => {
   const [autocomplete, setAutocomplete] = useState<string[]>([]);
-    // 자동 검색을 위한 API 호출 함수
     const debouncedFetchSuggestions = debounce(async (query: string) => {
       await fetchAutocomplete(query, setAutocomplete);  // fetchSuggestions 함수 호출
     }, 200);
@@ -29,7 +27,7 @@ const RecipeSearch = forwardRef<HTMLDivElement, RecipeSearchProps>(({ query, onQ
     <Autocomplete
       freeSolo
       options={autocomplete}
-      onInputChange={(event, value) => onQueryChange(value)}  // 입력 값 변경 시 상태 업데이트
+      onInputChange={(_, value) => onQueryChange(value)}  
       renderInput={(params) => (
         <TextField 
           {...params} 
@@ -42,48 +40,21 @@ const RecipeSearch = forwardRef<HTMLDivElement, RecipeSearchProps>(({ query, onQ
     />
     <Button 
       variant="contained" 
-      color="primary" 
+      // color="linear-gradient(90deg, #ff6f61, #ff9f80)" 
       onClick={onSearch} 
       disabled={isLoading}
+      sx={{
+        background: 'linear-gradient(90deg, #ff6f61, #ff9f80)',  // linear-gradient 적용
+        '&:hover': {
+          background: 'linear-gradient(90deg, #ff9f80, #ff6f61)',  // hover 시 배경 반전
+        },
+      }}
     >
       {isLoading ? 'Searching...' : 'Search'}
     </Button>
   </Box>
   </div>
-    // <Box sx={{ display: 'flex', gap: 2, alignItems: 'center', marginBottom: 4 }}>
-    //   <TextField
-    //     label="Search for a recipe"
-    //     variant="outlined"
-    //     fullWidth
-    //     value={query}
-    //     onChange={(e) => onQueryChange(e.target.value)}
-    //   />
-    //   <Button variant="contained" color="primary" onClick={onSearch} disabled={isLoading}>
-    //     {isLoading ? 'Searching...' : 'Search'}
-    //   </Button>
-    // </Box>
   );
 });
 
-const RecipeSearchArray: React.FC<RecipeSearchArrayProps> = ({ query, onQueryChange, onSearch, isLoading }) => {
-  return (
-    <Box sx={{ display: 'flex', gap: 2, alignItems: 'center', marginBottom: 4 }}>
-      <TextField
-        label="Search for a recipe"
-        variant="outlined"
-        fullWidth
-        value={query}
-        onChange={(e) => onQueryChange(e.target.value)}
-      />
-      <Button variant="contained" color="primary" onClick={onSearch} disabled={isLoading}>
-        {isLoading ? 'Searching...' : 'Search'}
-      </Button>
-    </Box>
-  );
-};
-
 export default RecipeSearch;
-
-
-
-// export default RecipeSearchArray;

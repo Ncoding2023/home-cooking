@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Chip, Box, Typography } from '@mui/material';
 import { ExcludeIngredientFilterProps } from '../types/RecipeTypes';
 

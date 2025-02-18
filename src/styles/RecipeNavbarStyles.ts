@@ -1,20 +1,21 @@
-import styled from 'styled-components';
-import { Button } from '@mui/material';
+// StyledComponents.ts
+import styled from "styled-components";
+import { AppBar, Box, IconButton, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 
-// Navbar 스타일
-export const Navbar = styled.div`
+// AppBar 스타일
+export const StyledAppBar = styled(AppBar)`
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background: linear-gradient(90deg, #FF6F61, #FF9F80) ;
-  /* background: linear-gradient(90deg, #FF6F61, #FF9F80) !important; */
+  background: linear-gradient(90deg, #ff6f61, #ff9f80) !important;
   box-shadow: none;
   z-index: 10;
 `;
 
 // Toolbar 스타일
-export const Toolbar = styled.div`
+export const StyledToolbar = styled(Box)`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -23,41 +24,27 @@ export const Toolbar = styled.div`
 `;
 
 // 로고 스타일
-export const NavbarLogo = styled.div`
+export const NavbarLogo = styled(Typography)`
   font-size: 1.5rem;
   font-weight: bold;
   color: white;
 `;
 
 // 메뉴 항목 스타일
-export const NavbarMenu = styled.div`
+export const NavbarMenu = styled(Box)`
   display: flex;
   gap: 20px;
 `;
 
-// 메뉴 항목
-export const NavbarItem = styled.a`
-  color: white;
+// IconButton을 Link와 결합하여 스타일링
+export const StyledLink = styled(Link)`
   text-decoration: none;
-  font-size: 1rem;
-  transition: color 0.3s;
-
-  &:hover {
-    color: #FFD1C1;
-  }
 `;
 
-// 버튼 스타일
-export const StyledButton = styled(Button)`
-  color: white;
-  text-transform: none;
-  font-size: 1rem;
-  padding: 8px 16px;
-  transition: background-color 0.3s;
-  position: relative;
-  z-index: 10;
-
+export const StyledIconButton = styled(IconButton)`
+  
+  transition: color 0.3s;
   &:hover {
-    background-color: #FFD1C1;
+    color: white;
   }
 `;
