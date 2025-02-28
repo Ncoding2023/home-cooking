@@ -1,64 +1,77 @@
-import { Container, Typography, Box, IconButton } from "@mui/material";
+import React from "react";
+import { FooterContainer, FooterContent, FooterLeft, FooterRight, FooterLink, FooterIconButton, FooterCenter } from "../styles/RecipeFooterStyles";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
+import PhoneIcon from '@mui/icons-material/Phone';
+import MailIcon from '@mui/icons-material/Mail';
+import { Tooltip } from "@mui/material";
 
 const RecipeFooter = () => {
   return (
-<Box 
-      component="footer"
-      sx={{ 
-        mt: "auto",       // ✅ 푸터를 페이지 아래로 밀어냄
-        position: "absolute",  // ✅ 하단 고정
-        left: 0,            // ✅ 왼쪽 끝부터 시작
-        width: "100%",      // ✅ 전체 폭 차지
-        py: 2, 
-        // pd: 0, 
-        bgcolor: "transparent",
-        background: "linear-gradient(90deg, #FF6F61, #FF9F80)", 
-        color: "white",
-        textAlign: "center",
-      }}
-    >
-      <Container maxWidth="lg">
-        <Typography variant="h6">Recipe Finder</Typography>
-        <Typography variant="body2">
-          맛있는 레시피를 찾아 만들어 먹자! 🍽️
-        </Typography>
+    <>
+    <FooterContainer>
+      {/* 상단 내용: 사이트 설명 및 링크 */}
+      <FooterContent className="top-section">
+        {/* 사이트 설명 및 인사말 (좌측) */}
+        <FooterLeft>
+          {/* <span>Recipe Finder</span> */}
+          <span>손쉬운 레시피로 더 맛있고 건강한 하루를! 🍲</span>
+          <span>배달비는 줄이고, 집에서 맛있는 요리를! 🍴</span>
+        </FooterLeft>
 
-    {/* 사이트 소개, 연락처, 개인정보 처리방침, 이용 약관 */}
-    <Box sx={{ mt: 2 }}>
-      <Typography variant="body2">
-        <a href="/RecipeAbout" style={{ color: 'white', marginRight: '20px' }}>사이트 소개</a>
-        <a href="/contact" style={{ color: 'white', marginRight: '20px' }}>연락처</a>
-        <a href="/privacy-policy" style={{ color: 'white', marginRight: '20px' }}>개인정보 처리방침</a>
-        <a href="/terms" style={{ color: 'white' }}>이용 약관</a>
-      </Typography>
-    </Box>
-
-        {/* SNS 링크 */}
-        <Box sx={{ mt: 1 }}>
-        <p>Follow us on:</p>
-          <IconButton component="a" href="https://github.com/" target="_blank" color="inherit">
+        <FooterCenter>
+        {/* <span>Follow us on:</span> */}
+          <FooterIconButton href="https://github.com/" target="_blank">
             <GitHubIcon />
-          </IconButton>
-          <IconButton component="a" href="https://twitter.com/" target="_blank" color="inherit">
+          </FooterIconButton>
+          <FooterIconButton href="https://twitter.com/" target="_blank">
             <TwitterIcon />
-          </IconButton>
-          <IconButton component="a" href="https://instagram.com/" target="_blank" color="inherit">
+          </FooterIconButton>
+          <FooterIconButton href="https://instagram.com/" target="_blank">
             <InstagramIcon />
-          </IconButton>
-        </Box>
+          </FooterIconButton>
+          <FooterIconButton href="tel:+01012345678" target="_blank">
+            <PhoneIcon />
+          </FooterIconButton>
+          <FooterIconButton href="mailto:test@test.com" target="_blank">
+            <MailIcon />
+          </FooterIconButton>
+        </FooterCenter>
 
-        {/* 저작권 정보 */}
-        <Typography variant="body2" sx={{ mt: 2 }}>
-          © {new Date().getFullYear()} Recipe Project. All Rights Reserved.
-          본 웹사이트는 <a href="https://www.data.go.kr/" target="_blank">공공데이터포털</a>의 데이터를 활용하여 제공됩니다. <br />
-          저작권 및 데이터 사용에 관한 자세한 사항은 관련 법령에 따라 적용됩니다.
-        </Typography>
-      </Container>
-    </Box>
-    
+        {/* SNS 링크 (우측) */}
+        <FooterRight>
+     <FooterLink href="/RecipeAbout">사이트 소개</FooterLink>
+      <Tooltip title="준비 중">
+        <span>
+        <FooterLink href="#">연락처</FooterLink>
+        </span>
+      </Tooltip>
+      <Tooltip title="준비 중">
+        <span>
+        <FooterLink href="#">사이트 맵</FooterLink> {/* 추가된 항목 */}
+        </span>
+      </Tooltip>
+      <Tooltip title="준비 중">
+        <span>
+        <FooterLink href="#">블로그</FooterLink> {/* 추가된 항목tag's  */}
+        </span>
+      </Tooltip>
+      </FooterRight>
+      </FooterContent>
+
+      {/* 하단 내용: 저작권 관련 정보 (중앙) */}
+      <FooterContent className="bottom-section">
+        <span>© 2025 Recipe Project. All Rights Reserved.</span>
+        <span>본 웹사이트는 
+          <a href="https://www.data.go.kr/">          
+          공공데이터포털
+          </a>
+ 의 데이터를 활용하여 제공됩니다.</span>
+        <span>저작권 및 데이터 사용에 관한 자세한 사항은 관련 법령에 따라 적용됩니다.</span>
+      </FooterContent>
+    </FooterContainer>
+    </>
   );
 };
 

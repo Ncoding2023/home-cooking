@@ -44,9 +44,9 @@ const RecipeSearch = forwardRef<HTMLDivElement, RecipeSearchProps>(({ query, onQ
       onClick={onSearch} 
       disabled={isLoading}
       sx={{
-        background: 'linear-gradient(90deg, #ff6f61, #ff9f80)',  // linear-gradient 적용
+        background: 'linear-gradient(to right, #ff7e5f, #feb47b)',  // linear-gradient 적용
         '&:hover': {
-          background: 'linear-gradient(90deg, #ff9f80, #ff6f61)',  // hover 시 배경 반전
+          background: 'linear-gradient(to right, #feb47b, #ff7e5f)',  // hover 시 배경 반전
         },
       }}
     >

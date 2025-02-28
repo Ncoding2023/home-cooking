@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Typography, CardContent, Box, Grid, CircularProgress } from '@mui/material';
-import { InfoText, IngredientItem, IngredientsContent, RecipeDetailContainer, RecipeImage, StepContainer, StepImage, StyledCard, TipContainer} from '../styles/RecipeDetailStyles'; // 타입을 types에서 임포트
+import { InfoText, IngredientItem, IngredientsContent, IngredientsTitle, RecipeDetailContainer, RecipeImage, StepContainer, StepImage, StyledBox, StyledCard, StyledCardContent, StyledGridContainer, StyledGridContainerThree, StyledGridContainerTwo, StyledGridItem, StyledGridItemHalf, StyledIngredientsCard, StyledTypographyH4, StyledTypographySubtitle, TipContainer} from '../styles/RecipeDetailStyles'; // 타입을 types에서 임포트
 import { InfoCard } from '../styles/RecipeDetailStyles'; 
 import { Recipe, RecipeDetailProps } from '../types/RecipeTypes';
 import { fetchRecipeRelatedFoodsNms } from '../utils/RecipeApi';
 import RecipeCard from '../components/RecipeCard';
+import { red } from '@mui/material/colors';
 
 const RecipeDetail: React.FC = () => {
   const location = useLocation();
@@ -41,32 +42,48 @@ console.log(recipe);
 
   return (
     <RecipeDetailContainer>
-      <Box>
-          <StyledCard>
+      <StyledBox>
+        <StyledCard>
         <RecipeImage
           component="img"
           image={recipe.ATT_FILE_NO_MAIN || 'https://via.placeholder.com/150'}
           alt={recipe.RCP_NM} 
           height="300"
         />
-        <CardContent>
-          <Typography variant="h4" gutterBottom>
-            {recipe.RCP_NM}
-          </Typography>
-          <Typography variant="subtitle1" gutterBottom>
-            <strong>방법:</strong> {recipe.RCP_WAY2} | <strong>종류:</strong> {recipe.RCP_PAT2}
-          </Typography>
-        </CardContent>
+        <StyledCardContent>
+      <StyledTypographyH4 variant="h4" gutterBottom>
+        {recipe.RCP_NM}
+      </StyledTypographyH4>
+      <StyledTypographySubtitle variant="subtitle1" gutterBottom>
+        <strong>방법:</strong> {recipe.RCP_WAY2} | <strong>종류:</strong> {recipe.RCP_PAT2}
+      </StyledTypographySubtitle>
+    </StyledCardContent>
       </StyledCard>
-      </Box>
+      </StyledBox>
 
-       {/* 재료 영역 */}
-       <Box mt={3}>
-       
+<StyledBox>
+<IngredientsTitle variant="h5" gutterBottom>
+        구성 재료
+      </IngredientsTitle>
+      <StyledIngredientsCard>
+        <StyledCardContent>
+          <IngredientsContent>
+            {recipe.RCP_PARTS_DTLS
+              ? recipe.RCP_PARTS_DTLS.split("\n").map((line, index) => (
+                  <IngredientItem key={index} variant="body1" gutterBottom data-index={index}>
+                    {line}
+                  </IngredientItem>
+                ))
+              : null}
+          </IngredientsContent>
+        </StyledCardContent>
+      </StyledIngredientsCard>
+</StyledBox>
+       {/* 재료 영역
+      <Box mt={3}>
        <Typography variant="h5" gutterBottom>
           구성 재료
       </Typography>
-      
       <StyledCard>
         <CardContent>
           <IngredientsContent>
@@ -78,58 +95,66 @@ console.log(recipe);
           </IngredientsContent>
         </CardContent>
       </StyledCard>
-      </Box>
+      </Box> */}
 
-      <Box>
-        <Typography variant="h5" gutterBottom>
+<StyledBox>
+    <StyledTypographyH4 variant="h5" gutterBottom>
       영양 정보
-      </Typography>
-        <Grid container spacing={2}>
-          <Grid item xs={12} sm={4}>
-            <InfoCard>
-              <CardContent>
-                <InfoText variant="body1">
-                <strong>탄수화물:</strong> {recipe.INFO_CAR} g
-                </InfoText>
-              </CardContent>
-            </InfoCard>
-          </Grid>
-          <Grid item xs={12} sm={4}>
-            <InfoCard>
-              <CardContent>
-                <InfoText variant="body1">
-                <strong>단백질:</strong> {recipe.INFO_PRO} g
-                </InfoText>
-              </CardContent>
-            </InfoCard>
-          </Grid>
-          <Grid item xs={12} sm={4}>
-            <InfoCard>
-              <CardContent>
-                <InfoText variant="body1">
-                <strong>지방:</strong> {recipe.INFO_FAT} g
-                </InfoText>
-              </CardContent>
-            </InfoCard>
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <InfoCard>
-              <CardContent>
-                <InfoText variant="body1">
-                <strong>열량:</strong> {recipe.INFO_ENG} kcal
-                  </InfoText>
-              </CardContent>
-            </InfoCard>
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <InfoCard>
-              <CardContent>
-                <InfoText variant="body1"><strong>나트륨:</strong> {recipe.INFO_NA} mg</InfoText>
-              </CardContent>
-            </InfoCard>
-          </Grid>
-        </Grid>
-    </Box>
+    </StyledTypographyH4>
+      {/* 첫 번째 줄 (3개) */}
+      <StyledGridContainerThree>
+      <StyledGridItem>
+        <InfoCard>
+          <CardContent>
+            <InfoText variant="body1">
+              <strong>탄수화물:</strong> {recipe.INFO_CAR} g
+            </InfoText>
+          </CardContent>
+        </InfoCard>
+      </StyledGridItem>
+      <StyledGridItem>
+        <InfoCard>
+          <CardContent>
+            <InfoText variant="body1">
+              <strong>단백질:</strong> {recipe.INFO_PRO} g
+            </InfoText>
+          </CardContent>
+        </InfoCard>
+      </StyledGridItem>
+      <StyledGridItem>
+        <InfoCard>
+          <CardContent>
+            <InfoText variant="body1">
+              <strong>지방:</strong> {recipe.INFO_FAT} g
+            </InfoText>
+          </CardContent>
+        </InfoCard>
+      </StyledGridItem>
+    </StyledGridContainerThree>
+
+    {/* 두 번째 줄 (2개) */}
+    <StyledGridContainerTwo>
+      <StyledGridItem>
+        <InfoCard>
+          <CardContent>
+            <InfoText variant="body1">
+              <strong>열량:</strong> {recipe.INFO_ENG} kcal
+            </InfoText>
+          </CardContent>
+        </InfoCard>
+      </StyledGridItem>
+      <StyledGridItem>
+        <InfoCard>
+          <CardContent>
+            <InfoText variant="body1">
+              <strong>나트륨:</strong> {recipe.INFO_NA} mg
+            </InfoText>
+          </CardContent>
+        </InfoCard>
+      </StyledGridItem>
+    </StyledGridContainerTwo>
+
+  </StyledBox>
 
     {/* 조리 과정 */}
     <Box mt={4}>

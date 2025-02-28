@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react';
-import { Box, Grid, Typography, CircularProgress, Paper } from '@mui/material';
+import { Box, Grid, Typography, CircularProgress } from '@mui/material';
 import RecipeCard from '../components/RecipeCard';
 import { fetchRecipeDtls, fetchRecipeNms } from '../utils/RecipeApi';
 import { Recipe } from '../types/RecipeTypes';
@@ -71,7 +71,6 @@ const RecipeSearchPage: React.FC = () => {
           {recipes.length > 0 ? (
             recipes.map((recipe) => (
               <Grid item xs={12} sm={6} md={4} key={recipe.RCP_SEQ}>
-                <Paper sx={{ p: 2, borderRadius: 2, boxShadow: 3 }}>
                   <RecipeCard
                     title={recipe.RCP_NM}
                     description={recipe.RCP_PAT2 || 'No description available.'}
@@ -79,7 +78,6 @@ const RecipeSearchPage: React.FC = () => {
                     image={recipe.ATT_FILE_NO_MAIN || 'https://via.placeholder.com/150'}
                     recipeAll={recipe}
                   />
-                </Paper>
               </Grid>
             ))
           ) : (

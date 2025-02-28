@@ -1,6 +1,6 @@
 import React from 'react';
 import { RecipeMethodsFilterProps } from '../types/RecipeTypes';
-import { CategoryBox, CategoryContainer, CategoryItem, Title } from '../styles/RecipeCategoryFilterStyles';
+import { CategoryBox, CategoryContainer, CategoryItemMethods, CategoryTitle } from '../styles/RecipeCategoryFilterStyles';
 import { Apps ,LocalFireDepartment, OutdoorGrill, Fastfood, PanTool, RiceBowl, Kitchen, Restaurant  } from "@mui/icons-material";
 // import FireplaceIcon from '@mui/icons-material/Fireplace';
 // import GrillIcon from '@mui/icons-material/Grill';
@@ -23,20 +23,29 @@ const RecipeMethodsFilter: React.FC<RecipeMethodsFilterProps> = ({
 
   return (
     <CategoryContainer>
-      <Title>
-      <Kitchen color='success'/>
-        </Title>
+      <CategoryTitle color='#3E503E'>
+      <Kitchen/> <strong>방식</strong>
+        </CategoryTitle>
       <CategoryBox>
         {methods.map((method) => (
-    <CategoryItem
+    <CategoryItemMethods
       key={method.name}
       isActive={selectedRecipeMethods === method.name}
       onClick={() => onRecipeMethodsChange(method.name)}
     >
       {method.icon} 
       <span style={{marginBottom:"10px"}} >{method.name}</span>
-    </CategoryItem>
+    </CategoryItemMethods>
   ))}
+    {/* <CategoryItem
+      key={method.name}
+      isActive={selectedRecipeMethods === method.name}
+      onClick={() => onRecipeMethodsChange(method.name)}
+    >
+      {method.icon} 
+      <span style={{marginBottom:"10px"}} >{method.name}</span>
+    </CategoryItem> 
+  ))}*/}
       </CategoryBox>
     </CategoryContainer>
   );

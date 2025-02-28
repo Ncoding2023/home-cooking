@@ -50,8 +50,9 @@ const PatchNotes = () => {
   };
 
   return (
-    <Box sx={{ padding: 4 }}>
-      <Typography variant="h4" sx={{ fontWeight: 'bold', marginBottom: 3 }}>
+    // sx={{ padding: 4, textAlign: 'left', backgroundColor: "#ff9f80", borderRadius: 2 }}
+    <Box sx={{ padding: 4, textAlign: 'left', background: "linear-gradient(to right, #ff7e5f, #feb47b)", borderRadius: 2 }}>
+      <Typography variant="h4" sx={{ fontWeight: 'bold', marginBottom: 3, color: "#fff"}}>
       업데이트 내역
       </Typography>
       
@@ -92,9 +93,9 @@ const PatchNotes = () => {
                 <TableCell>
                   <Button
                     variant="contained"
-                    color="primary"
+                    color="warning"
                     onClick={() => handleViewPost(post.id)}
-                    sx={{ backgroundColor: '#1976d2', '&:hover': { backgroundColor: '#1565c0' } }}
+                    sx={{ backgroundColor: 'linear-gradient(to right, #ff7e5f, #feb47b)', '&:hover': { backgroundColor: '#ff7e5f' } }}
                   >
                     상세보기
                   </Button>

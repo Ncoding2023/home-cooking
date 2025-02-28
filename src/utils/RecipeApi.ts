@@ -70,6 +70,7 @@ export const fetchRecipeList = async (
     try {
       const response = await fetch(apiUrl);
       const data = await response.json();
+      console.log(data);
       return {
           recipes: data[SERVICE_ID]?.row || [],
         totalCount: data[SERVICE_ID]?.total_count || 0, 

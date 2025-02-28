@@ -14,7 +14,7 @@ const RecipeFavorite = () => {
   }, []);
 
   return (
-    <Box sx={{ marginTop: 10 , width: 950}}>
+    <Box sx={{ marginTop: 10, marginBottom: 10 , width: 950}}>
         
       <Typography variant="h4" gutterBottom>
         찜한 레시피 목록

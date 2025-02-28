@@ -9,10 +9,10 @@ gap: 16px;
 padding: 24px;
 `;
 
-export const Title = styled(Typography)`
+export const CategoryTitle = styled(Typography)`
 font-size: 18px;
 font-weight: bold;
-color: #333;
+/* color: #fff; */
 `;
 
 export const CategoryBox = styled(Box)`
@@ -29,7 +29,7 @@ export const CategoryItem = styled.div.withConfig({
   font-weight: 600;
   cursor: pointer;
   padding: 8px 16px;
-  color: ${(props) => (props.isActive ? '#ff6f61' : '#333')}; /* 선택된 항목 강조 */
+  color: ${(props) => (props.isActive ? '#B44D3A' : '#FFFFFF')}; /* 선택된 항목 강조 */
   border-bottom: ${(props) => (props.isActive ? '2px solid #ff9f80' : '2px solid transparent')}; /* 밑줄 효과 */
   transition: color 0.3s, border-bottom 0.3s;
 
@@ -38,4 +38,19 @@ export const CategoryItem = styled.div.withConfig({
   border-bottom: 2px solid #ff9f80; /* hover 시 밑줄 파란색 */
 }`;
 
+export const CategoryItemMethods = styled.div.withConfig({
+  shouldForwardProp: (prop) => prop !== 'isActive', // isActive는 DOM에 전달되지 않음
+})<{ isActive: boolean }>`
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 8px 16px;
+  color: ${(props) => (props.isActive ? '#3E503E' : '#FFFFFF')}; /* 선택된 항목 강조 */
+  border-bottom: ${(props) => (props.isActive ? '2px solid #ff9f80' : '2px solid transparent')}; /* 밑줄 효과 */
+  transition: color 0.3s, border-bottom 0.3s;
+
+&:hover {
+  color: #5A6F55;
+  border-bottom: 2px solid #ff9f80; /* hover 시 밑줄 파란색 */
+}`;
 // background: linear-gradient(90deg, #ff6f61, #ff9f80) !important;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { RecipeCategoryFilterProps } from '../types/RecipeTypes';
-import { CategoryBox, CategoryContainer, CategoryItem, Title } from '../styles/RecipeCategoryFilterStyles';
+import { CategoryBox, CategoryContainer, CategoryItem, CategoryTitle } from '../styles/RecipeCategoryFilterStyles';
 import { Apps, SoupKitchen, DinnerDining, RiceBowl, FoodBank, Cake, Restaurant, RestaurantMenu } from "@mui/icons-material";
 
 
@@ -20,9 +20,9 @@ const categories = [
   // const categories = ['국&찌개', '반찬', '밥', '일품', '후식', '기타'];
   return (
     <CategoryContainer>
-      <Title>
-        <RestaurantMenu color='warning'/>
-        </Title>
+      <CategoryTitle color='#B44D3A'>
+        <RestaurantMenu /> <strong>종류</strong>
+        </CategoryTitle>
       <CategoryBox>
         {categories.map((category) => (
     <CategoryItem

@@ -67,7 +67,7 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ title, description, description
             flexGrow: 1,  // 부모 요소의 공간을 차지하도록 설정
         }}>
             <CardMedia onClick={handleCardClick} component="img" height="180" image={image} alt={title} />
-            <CardContent sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', position: 'relative' }}>
+            <CardContent sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', position: 'relative', background: "linear-gradient(to right, #ff7e5f, #feb47b)"}}>
                 {/* 제목 부분 */}
                 <Typography variant="h6" component="div" sx={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                     {title}

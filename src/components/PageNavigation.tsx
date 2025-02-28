@@ -14,8 +14,8 @@ const PageNavigation: React.FC<PaginationProps> = ({ startIdx, endIdx, totalItem
   const endPage = Math.min(startPage + itemsPagePage - 1, totalPages); // 현재 범위의 마지막 페이지
 
     return (
-      <Box sx={{marginTop:"10px;"}}>
-        <button onClick={() => onPageChange(startIdx - itemsPerPage, startIdx - 1)} disabled={currentPage === 1}>
+      <Box sx={{marginTop:"10px"}}>
+        <button onClick={() => onPageChange(startIdx - itemsPerPage, startIdx - 1)} disabled={currentPage === 1} style={{background:"linear-gradient(to right, #ff7e5f, #feb47b)"}}>
           Prev
         </button>
 
@@ -24,12 +24,13 @@ const PageNavigation: React.FC<PaginationProps> = ({ startIdx, endIdx, totalItem
       key={page}
       onClick={() => onPageChange((page - 1) * itemsPerPage + 1, page * itemsPerPage)}
       disabled={startIdx === (page - 1) * itemsPerPage + 1}
+      style={{background:"linear-gradient(to right, #ff7e5f, #feb47b)"}}
     >
       {page}
     </button>
       ))}
 
-        <button onClick={() => onPageChange(endIdx + 1, endIdx + itemsPerPage)} disabled={currentPage === totalPages}>
+        <button onClick={() => onPageChange(endIdx + 1, endIdx + itemsPerPage)} disabled={currentPage === totalPages} style={{background:"linear-gradient(to right, #ff7e5f, #feb47b)"}}>
           Next
         </button>
       </Box>

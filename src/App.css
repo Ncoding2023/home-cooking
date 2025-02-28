@@ -14,6 +14,9 @@ body {
   font-size: 18px; /* 기본 폰트 크기 증가 */
   margin: 0;
   padding: 0;
+  background: linear-gradient(to bottom, #FAF3E0, #FFCC80);
+  /* background-color: #f7f0e1; */
+
 }
 
 h1, h2, h3, h4, h5, h6 {

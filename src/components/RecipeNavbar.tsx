@@ -10,14 +10,31 @@ import RecipeSearch from "./RecipeSearch";
 
 // 스타일 파일에서 임포트
 import { StyledAppBar, StyledToolbar, NavbarLogo, NavbarMenu, StyledIconButton, StyledLink } from "../styles/RecipeNavbarStyles";
+import { useNavigate } from "react-router-dom";
 
 const RecipeNavbar: React.FC = () => {
   const [searchOpen, setSearchOpen] = useState<boolean>(false);
   const [query, setQuery] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
+  const [activeButton, setActiveButton] = useState<string | null>(null);
+
+  const handleClick = (button: string) => {
+    console.log("query==",query);
+    console.log("button==",button);
+    setActiveButton(prev => (prev === button ? null : button)); // 이미 선택된 아이콘은 비활성화
+    if (button === "search") {
+      setSearchOpen(!searchOpen);//버튼 전환
+    }else{
+      setSearchOpen(false);
+    }
+  };
+  const navigate = useNavigate();
+
   const handleSearch = async () => {
-    if (!query.trim()) return;
+    if (query.trim()) {
+      navigate(`/search?query=${encodeURIComponent(query)}`);
+    }
     setLoading(true);
     try {
       console.log(`Searching for: ${query}`);
@@ -28,10 +45,6 @@ const RecipeNavbar: React.FC = () => {
     }
   };
 
-  const toggleSearch = () => {
-    setSearchOpen(!searchOpen);
-  };
-
   return (
     <StyledAppBar>
       <StyledToolbar>
@@ -40,30 +53,45 @@ const RecipeNavbar: React.FC = () => {
         </NavbarLogo>
         <NavbarMenu>
           <StyledLink to="/">
-            <StyledIconButton>
+            <StyledIconButton         
+        className={activeButton === 'home' ? 'active' : ''}
+        onClick={() => handleClick('home')}
+      >
               <HomeIcon />
             </StyledIconButton>
           </StyledLink>
 
           <StyledLink to="/RecipeList">
-            <StyledIconButton>
+            <StyledIconButton 
+                    className={activeButton === 'restaurant' ? 'active' : ''}
+                    onClick={() => handleClick('restaurant')}
+                  >
               <RestaurantMenuIcon />
             </StyledIconButton>
           </StyledLink>
 
           <StyledLink to="/RecipeFavorite">
-            <StyledIconButton>
+            <StyledIconButton
+                   className={activeButton === 'favorite' ? 'active' : ''}
+                   onClick={() => handleClick('favorite')}
+                 >
               <FavoriteIcon />
             </StyledIconButton>
           </StyledLink>
 
           <StyledLink to="/RecipeAbout">
-            <StyledIconButton>
+            <StyledIconButton
+               className={activeButton === 'info' ? 'active' : ''}
+               onClick={() => handleClick('info')}
+             >
               <InfoIcon />
             </StyledIconButton>
           </StyledLink>
 
-          <StyledIconButton onClick={toggleSearch}>
+          <StyledIconButton 
+             className={activeButton === 'search' ? 'active' : ''}
+             onClick={() => handleClick('search')}
+          >
             <SearchIcon />
           </StyledIconButton>
         </NavbarMenu>
@@ -82,3 +110,4 @@ const RecipeNavbar: React.FC = () => {
 };
 
 export default RecipeNavbar;
+
