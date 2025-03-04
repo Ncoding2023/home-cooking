@@ -146,4 +146,20 @@ RecipeDetail 추가 작업으로 현재 관련 게시물 작업도중   API호�
     
     `,
   },
+  {
+    id: 8,
+    title: "20250228",
+    author: "남상원",
+    createdAt: "20250228",
+    status: "수정 ",
+    content: `20250228
+    .
+    RecipeFooter.tsx updete
+      높이 수정
+    RecipeCarousel.tsx  updete
+      비율 조정
+    RecipeNavbar.tsx
+      검색이 되지 않는 오류 현상 수정
+    `,
+  },
 ];
