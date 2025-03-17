@@ -1,4 +1,3 @@
-import React from "react";
 import { FooterContainer, FooterContent, FooterLeft, FooterRight, FooterLink, FooterIconButton, FooterCenter } from "../styles/RecipeFooterStyles";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import TwitterIcon from "@mui/icons-material/Twitter";

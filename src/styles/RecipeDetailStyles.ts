@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {CardMedia, Card , Box, Typography, Paper, CardContent, Grid2  } from '@mui/material';
+import {CardMedia, Card , Box, Typography, Paper, CardContent } from '@mui/material';
 // import { , Typography } from '@mui/material';
 
 // 스타일 적용된 Box
@@ -200,27 +200,6 @@ export const StyledGridItem = styled.div`
   align-items: center;
   min-width: 200px; /* 최소 너비 설정 */
 `;
-// export const StyledGridContainer = styled(Grid2)`
-// width: 100%;
-// /* min-width: 900px; */
-//   /* display: flex; */
-//   /* justify-content: center; */
-//   /* align-items: center; */
-// `;
-
-// export const StyledGridItem = styled.div`
-// display: grid;
-// /* justify-content: center;
-// align-items: center; */
-// flex: 0 0 33.33%; /* 기본값: 3개 정렬 */
-
-// @media (max-width: 600px) {
-//   flex: 0 0 100%; /* 모바일에서는 1줄 1개 */
-// }
-// `;
-// export const StyledGridItemHalf = styled(StyledGridItem)`
-//   flex: 0 0 50%; /* 2개 정렬 */
-// `;
 
 export const NutritionTitle = styled(Typography)`
   font-weight: bold;

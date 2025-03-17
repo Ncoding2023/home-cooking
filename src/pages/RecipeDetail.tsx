@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Typography, CardContent, Box, Grid, CircularProgress } from '@mui/material';
-import { InfoText, IngredientItem, IngredientsContent, IngredientsTitle, RecipeDetailContainer, RecipeImage, StepContainer, StepImage, StyledBox, StyledCard, StyledCardContent, StyledGridContainer, StyledGridContainerThree, StyledGridContainerTwo, StyledGridItem, StyledGridItemHalf, StyledIngredientsCard, StyledTypographyH4, StyledTypographySubtitle, TipContainer} from '../styles/RecipeDetailStyles'; // 타입을 types에서 임포트
+import { InfoText, IngredientItem, IngredientsContent, IngredientsTitle, RecipeDetailContainer, RecipeImage, StepContainer, StepImage, StyledBox, StyledCard, StyledCardContent, StyledGridContainerThree, StyledGridContainerTwo, StyledGridItem, StyledIngredientsCard, StyledTypographyH4, StyledTypographySubtitle, TipContainer} from '../styles/RecipeDetailStyles'; // 타입을 types에서 임포트
 import { InfoCard } from '../styles/RecipeDetailStyles'; 
 import { Recipe, RecipeDetailProps } from '../types/RecipeTypes';
 import { fetchRecipeRelatedFoodsNms } from '../utils/RecipeApi';
 import RecipeCard from '../components/RecipeCard';
-import { red } from '@mui/material/colors';
 
 const RecipeDetail: React.FC = () => {
   const location = useLocation();
