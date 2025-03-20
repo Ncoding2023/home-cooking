@@ -9,8 +9,18 @@ import RecipeSearchPage from './pages/RecipeSearchPage';
 import RecipeAbout from './pages/RecipeAbout';
 import RecipeFavorite from './pages/RecipeFavorite';
 import RecipeFooter from './components/RecipeFooter';
+// import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function App() {
+  
+const navigate = useNavigate();
+navigate('/home-cooking');
+
+  // useEffect(() => {
+  //   if (window.location.pathname === '/') {
+  //   }
+  // }, [history]);
   return (
     <>
     <div>

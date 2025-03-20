@@ -3,7 +3,8 @@ import { Recipe, RecipeAll } from '../types/RecipeTypes';  // 인터페이스 �
 const SERVICE_ID = 'COOKRCP01'; // Example service ID for recipes
 const DATA_TYPE = 'json'; // Response format
 const apiKey = import.meta.env.VITE_RECIPE_API_KEY;
-const baseUrl = 'http://openapi.foodsafetykorea.go.kr/api';
+const baseUrl = 'https://openapi.foodsafetykorea.go.kr/api';
+// const baseUrl_bak = 'http://openapi.foodsafetykorea.go.kr/api';
 
   // 키워드 다른곳에서 배열로 사용할 수도 있음 임시
   export const fetchRecipeNms = async (
