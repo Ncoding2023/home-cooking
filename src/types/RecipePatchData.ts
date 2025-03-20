@@ -160,6 +160,14 @@ RecipeDetail 추가 작업으로 현재 관련 게시물 작업도중   API호�
       비율 조정
     RecipeNavbar.tsx
       검색이 되지 않는 오류 현상 수정
+      20250317 add
+      // base: '/https://github.com/Ncoding2023/home-cooking/', // GitHub Pages에 맞춰 경로 설정
+      // "homepage": "https://Ncoding2023.github.io/nwitter-reloaded" 이거 패키지.제이순파일에 있던거
+      배포url
+      https://ncoding2023.github.io/
+      명령어
+
+      npm run deploy
     `,
   },
 ];
