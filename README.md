@@ -15,10 +15,11 @@ Frontend
 - MUI + styled-components: UI 스타일링
 OPEN - API & 데이터 처리
 - 공공 데이터 포털 API (조리식품의 레시피 DB): 레시피 데이터 제공
-배포
 GitHubPage
-- GitHub: https://github.com/Ncoding2023/home-cooking
 ```
+# 배포링크
+https://github.com/Ncoding2023/home-cooking
+
 
 # 프로젝트 구조
 ```
@@ -68,6 +69,13 @@ components/
 - 레시피 상세 정보 제공 (재료, 조리법 등)
 - 회원가입 불필요 → 즉시 사용 가능
 
-=======
+## 🚀 시작하기
+```bash
+# 개발 모드 실행
+npm run dev
+
+# 프로덕션 빌드
+npm run build
+
 # home-cooking
 2025.02.03 공개로 재생성
