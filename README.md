@@ -1,8 +1,9 @@
 # Recipe Finder
+
+# React + TypeScript + Vite
 [![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?logo=vite&logoColor=white)](https://vitejs.dev/)
 [![React](https://img.shields.io/badge/react-%2320232a.svg?logo=react&logoColor=%2361DAFB)](https://react.dev/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-# React + TypeScript + Vite
+
 # 프로젝트 개요
 Recipe Finder는 물가 상승과 생활 패턴 변화에 따라 배달 음식 의존도 증가 → 개인 재정 악화 + 건강 관리 어려움 이라는 사회적 문제를 해결하기 위해 기획된 정적 프론트엔드 중심의 레시피 검색 플랫폼입니다.
 
