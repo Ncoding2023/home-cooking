@@ -1,9 +1,10 @@
 # Recipe Finder
+[![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?logo=vite&logoColor=white)](https://vitejs.dev/)
+[![React](https://img.shields.io/badge/react-%2320232a.svg?logo=react&logoColor=%2361DAFB)](https://react.dev/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 # React + TypeScript + Vite
 # 프로젝트 개요
 Recipe Finder는 물가 상승과 생활 패턴 변화에 따라 배달 음식 의존도 증가 → 개인 재정 악화 + 건강 관리 어려움 이라는 사회적 문제를 해결하기 위해 기획된 정적 프론트엔드 중심의 레시피 검색 플랫폼입니다.
-
-늘어나는 물가 상승으로 인해 배달 음식으로 인한 지출을 줄어보자는 의도로 시작하며 프론트만으로 사용하여 정적 컴포넌트 위주로 사용하여 배포를 하여도 비용이 발생하지 않게 끔 기획하며 시작하게 되었습니다. 여기서 DB역할을 사용하자고 openAPI를 선택했고 개인 정보를 수집하게 되면 보안 이슈 관련으로는 벡엔드 없이는 하기에는 취약을 거라 판단하여 회원없이 사용할 수 있게 끔 개발했습니다.
 
 # 주요 기술 스택
 ```
@@ -64,6 +65,7 @@ components/
 - 검색창을 통한 레시피 검색 및 자동완성
 - 카테고리 필터를 이용한 레시피 분류
 - 레시피 상세 정보 제공 (재료, 조리법 등)
+- 회원가입 불필요 → 즉시 사용 가능
 
 =======
 # home-cooking
