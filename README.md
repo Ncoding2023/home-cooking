@@ -1,15 +1,24 @@
-<<<<<<< HEAD
+# Recipe Finder
 # React + TypeScript + Vite
+# 프로젝트 개요
+Recipe Finder는 물가 상승과 생활 패턴 변화에 따라 배달 음식 의존도 증가 → 개인 재정 악화 + 건강 관리 어려움 이라는 사회적 문제를 해결하기 위해 기획된 정적 프론트엔드 중심의 레시피 검색 플랫폼입니다.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+늘어나는 물가 상승으로 인해 배달 음식으로 인한 지출을 줄어보자는 의도로 시작하며 프론트만으로 사용하여 정적 컴포넌트 위주로 사용하여 배포를 하여도 비용이 발생하지 않게 끔 기획하며 시작하게 되었습니다. 여기서 DB역할을 사용하자고 openAPI를 선택했고 개인 정보를 수집하게 되면 보안 이슈 관련으로는 벡엔드 없이는 하기에는 취약을 거라 판단하여 회원없이 사용할 수 있게 끔 개발했습니다.
 
-Currently, two official plugins are available:
+# 주요 기술 스택
+```
+Frontend
+- React (with TypeScript): 컴포넌트 기반 UI 개발
+- Vite: 빠른 빌드와 개발 환경 제공
+- MUI + styled-components: UI 스타일링
+OPEN - API & 데이터 처리
+- 공공 데이터 포털 API (조리식품의 레시피 DB): 레시피 데이터 제공
+배포
+GitHubPage
+- GitHub: https://github.com/Ncoding2023/home-cooking
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## 주요 기술 스택
-
+# 프로젝트 구조
 ```
 상위
 components/
@@ -51,30 +60,11 @@ components/
 │   └──   RecipeApi.ts				# 레시피 검색 웹의 용도별APIurl호출함수
 │   └──   RecipeListUtils.ts			# 개발중
 ```
+# 주요 기능 
+- 검색창을 통한 레시피 검색 및 자동완성
+- 카테고리 필터를 이용한 레시피 분류
+- 레시피 상세 정보 제공 (재료, 조리법 등)
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
 =======
 # home-cooking
 2025.02.03 공개로 재생성
