@@ -10,11 +10,7 @@ Currently, two official plugins are available:
 
 ## 주요 기술 스택
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
+```
 상위
 components/
 │   ├── AboutSection.tsx			# About페이지의 소개글 컴포넌트
@@ -54,8 +50,6 @@ components/
 │   └──  fetchCategories.ts			# 카테고리 APIurl호출
 │   └──   RecipeApi.ts				# 레시피 검색 웹의 용도별APIurl호출함수
 │   └──   RecipeListUtils.ts			# 개발중
-App.css 최상위 스타일
-App.tsx 최상위 파일
 ```
 
 - Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
